@@ -1,0 +1,8 @@
+ssh punkmap@64.255.125.231 <<EOF
+ cd /var/www/html/sites/Jenkins-CI_CD/
+ git pull
+ npm install — production
+ npm run build
+ pm2 restart all
+ exit
+EOF
