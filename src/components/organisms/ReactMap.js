@@ -46,7 +46,7 @@ class ReactMap extends React.PureComponent {
     
     let mv = new MapView({
       container: containerNode
-      , center: [-78.90392, 35.99702]
+      , center: [-104.9903, 39.7392]
       , zoom: 18
       , map: map
     }).when((function(mapView){
