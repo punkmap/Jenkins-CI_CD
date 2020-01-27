@@ -1,4 +1,3 @@
-su - jenkins
 ssh punkmap@64.225.125.231 <<EOF
  cd /var/www/html/sites/Jenkins-CI_CD/
  git pull
