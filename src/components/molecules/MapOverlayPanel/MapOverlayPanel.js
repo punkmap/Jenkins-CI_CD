@@ -1,15 +1,13 @@
 import React, { Component } from 'react'
 //import { loadModules } from 'esri-loader'
 import MapSearch from '../MapSearch/MapSearch'
-import SidePanel from '../../SidePanel'
-import InfoPanel from '../InfoPanel/InfoPanel'
+import SidePanel from '../../molecules/SidePanel'
 import './MapOverlayPanel.css'
 import Grid from '@material-ui/core/Grid'
 class MapOverlayPanel extends Component {
   constructor(props){
     super(props)
     this.state = {
-      hideSidePanel: true
     }
   } 
   setProjectCallback = (value) =>{
@@ -23,14 +21,13 @@ class MapOverlayPanel extends Component {
     this.props.phaseCallback(value)
   }
   componentDidUpdate = () => {
-    console.log('MAPOVERLAYPANEL.componentDidUpdate this.state.hodeSidePanel: ' + this.state.hodeSidePanel)
   }
   render() {
     return (
       <div className="mapOverlayPanel">
         <Grid
           container
-          spacing={16}
+          spacing={10}
           alignItems="center"
           direction="row"
           justify="center"
@@ -40,17 +37,8 @@ class MapOverlayPanel extends Component {
             resultPinDragable={true}
           />
           <SidePanel ref="sidePanel" 
-            //hideSidePanel={false} 
-            hideSidePanel={this.props.hideSidePanel_MapOverlay} 
-            addSelectedProperties = {this.props.addSelectedProperties}
-            deleteSelectedProperties = {this.props.deleteSelectedProperties}
-            projectCallback = {this.setProjectCallback}
-            phaseCallback = {this.setPhaseCallback}
+            hideSidePanel={this.props.hideSidePanel} 
           />
-          <InfoPanel
-            parcelData={this.props.parcelData}
-            realEstateData={this.props.realEstateData}
-          ></InfoPanel>
         </Grid>
       </div>
     )

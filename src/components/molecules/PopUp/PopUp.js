@@ -47,8 +47,8 @@ class PopUp extends React.Component {
       const self = this
       console.log('popupRender');
       const popupData = {}
-      popupData.parcelData = {'label': 'Parcel Data:', 'data':self.props.parcelData}
-      popupData.realEstate = {'label': 'Real Estate Data:', 'data':self.props.realEstateData}
+      popupData.parcelData = {'label': 'Parcel Data:', 'data':self.props.data}
+    //   popupData.realEstate = {'label': 'Real Estate Data:', 'data':self.props.realEstateData}
       console.log('popupData: ' + JSON.stringify(popupData))
       console.log('classes.subHeader: ' + JSON.stringify(classes.subHeader))
       //   Object.keys(popupData).map(type => {
