@@ -39,15 +39,13 @@ class ReactMap extends React.PureComponent {
       if (self.state.ctrlKey){self.setState({ctrlKey: false})}
     }
   }
-  loadMap = ({loadedModules: [Map, MapView, FeatureLayer, GraphicsLayer, watchUtils], containerNode}) => {
+  loadMap = ({loadedModules: [Map, Graphic, MapView, FeatureLayer, GraphicsLayer, watchUtils, Locate], containerNode}) => {
     const self = this;
     
     let map = new Map({basemap: 'satellite'})
     
     let mv = new MapView({
       container: containerNode
-      , center: [-104.9903, 39.7392]
-      , zoom: 18
       , map: map
     }).when((function(mapView){
         self.setState({mapView:mapView})
@@ -60,6 +58,16 @@ class ReactMap extends React.PureComponent {
         mapView.popup.watch('visible', function(e){
           if(e){self.setReactPopupContent()}
         })
+        var locateWidget = new Locate({
+          view: mapView,   // Attaches the Locate button to the view
+          graphic: new Graphic({
+            symbol: { type: "simple-marker" }  // overwrites the default symbol used for the
+            // graphic placed at the location of the user when found
+          })
+        })
+        
+        mapView.ui.add(locateWidget, "top-left");
+        locateWidget.locate();
     }));
   }
   
@@ -106,7 +114,7 @@ class ReactMap extends React.PureComponent {
       <div className="ReactScene">
         <EsriLoaderReact 
           options={options}
-          modulesToLoad={['esri/Map', 'esri/views/MapView','esri/layers/FeatureLayer', 'esri/layers/GraphicsLayer', 'esri/core/watchUtils']}    
+          modulesToLoad={['esri/Map', 'esri/Graphic', 'esri/views/MapView','esri/layers/FeatureLayer', 'esri/layers/GraphicsLayer', 'esri/core/watchUtils', 'esri/widgets/Locate']}    
           onReady={this.loadMap}
         />
         <MapOverlayPanel 
