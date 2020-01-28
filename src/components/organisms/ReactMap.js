@@ -65,7 +65,7 @@ class ReactMap extends React.PureComponent {
         })
         
         mapView.ui.add(locateWidget, "top-left");
-        
+        document.getElementsByClassName('esri-locate').classlist.remove('esri-hide')
         // locateWidget.locate();
     }));
   }
