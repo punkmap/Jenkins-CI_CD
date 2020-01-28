@@ -60,10 +60,7 @@ class ReactMap extends React.PureComponent {
         })
         var locateWidget = new Locate({
           view: mapView,   // Attaches the Locate button to the view
-          graphic: new Graphic({
-            symbol: { type: "simple-marker" }  // overwrites the default symbol used for the
-            // graphic placed at the location of the user when found
-          })
+          
         })
         
         mapView.ui.add(locateWidget, "top-left");
