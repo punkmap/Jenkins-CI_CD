@@ -67,7 +67,7 @@ class ReactMap extends React.PureComponent {
         })
         
         mapView.ui.add(locateWidget, "top-left");
-        locateWidget.locate();
+        // locateWidget.locate();
     }));
   }
   
