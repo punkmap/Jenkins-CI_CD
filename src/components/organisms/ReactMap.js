@@ -46,6 +46,8 @@ class ReactMap extends React.PureComponent {
     
     let mv = new MapView({
       container: containerNode
+      , center: [-98.23, 39.39]
+      , zoom: 5
       , map: map
     }).when((function(mapView){
         self.setState({mapView:mapView})
@@ -60,10 +62,10 @@ class ReactMap extends React.PureComponent {
         })
         var locateWidget = new Locate({
           view: mapView,   // Attaches the Locate button to the view
-          
         })
         
         mapView.ui.add(locateWidget, "top-left");
+        
         // locateWidget.locate();
     }));
   }
